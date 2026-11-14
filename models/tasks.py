@@ -73,32 +73,3 @@ def delete_task(task_id: int) -> None:
         if task is not None:
             session.delete(task)
 
-
-# def create_task(task: dict) -> int:
-#     with get_connection() as connection:
-#         row = connection.execute(
-#             """
-#             INSERT INTO tasks (title, description, category_id, priority_id, status_id)
-#             VALUES (%s, %s, %s, %s, %s) RETURNING id
-#             """,
-#             (task["title"], task["description"], task["category_id"],
-#              task["priority_id"], task["status_id"]),
-#         ).fetchone()
-#         return row["id"]
-
-
-# def update_task(task_id: int, task: dict) -> None:
-#     with get_connection() as connection:
-#         connection.execute(
-#             """
-#             UPDATE tasks SET title = %s, description = %s, category_id = %s,
-#                              priority_id = %s, status_id = %s
-#             WHERE id = %s
-#             """,
-#             (task["title"], task["description"], task["category_id"],
-#              task["priority_id"], task["status_id"], task_id),
-#         )
-
-# def delete_task(task_id: int) -> None:
-#     with get_connection() as connection:
-#         connection.execute("DELETE FROM tasks WHERE id = %s", (task_id,))
