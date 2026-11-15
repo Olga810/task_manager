@@ -58,7 +58,8 @@ def update_task(task_id: int, task: dict) -> None:
     with Session(get_engine()) as session, session.begin():
         existing_task = session.get(Task, task_id)
         if existing_task is None:
-            raise ValueError(f"Задача с id={task_id} не найдена")
+            return None
+            # raise ValueError(f"Задача с id={task_id} не найдена")
 
         existing_task.title = task["title"]
         existing_task.description = task["description"]
